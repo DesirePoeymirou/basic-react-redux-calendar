@@ -6,6 +6,7 @@ export const calendarSlice = createSlice({
   initialState: {
     currentMonth: moment().format('MMMM'),
     currentYear: moment().format('YYYY'),
+    reminderlist: [],
   },
   reducers: {
     // Redux Toolkit allows us to write "mutating" logic in reducers. It
@@ -42,6 +43,9 @@ export const calendarSlice = createSlice({
         .year(state.currentYear - 1)
         .format('YYYY');
     },
+    addReminder: (state, action) => {
+      state.reminderlist = [...state.reminderlist, action.payload];
+    },
   },
 });
 
@@ -50,6 +54,7 @@ export const {
   setPrevMonth,
   setNextYear,
   setPrevYear,
+  addReminder,
 } = calendarSlice.actions;
 
 export default calendarSlice.reducer;

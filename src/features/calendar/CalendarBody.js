@@ -6,7 +6,9 @@ import moment from 'moment';
 import './calendar.css';
 
 export default function CalendarBody() {
-  const { currentMonth, currentYear } = useSelector((state) => state.calendar);
+  const { currentMonth, currentYear, reminderlist } = useSelector(
+    (state) => state.calendar
+  );
   const startOfMonth = parseInt(moment().startOf('month').format('d'));
   const daysPerMonth = parseInt(moment().daysInMonth());
   const endOfMonth = parseInt(moment().endOf('month').format('d'));
@@ -42,6 +44,8 @@ export default function CalendarBody() {
               ? 'isWeekend'
               : ''
           }
+          date={date}
+          reminderlist={reminderlist}
         />
       );
     }
