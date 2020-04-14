@@ -1,4 +1,4 @@
-/* .row {
+.row {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,6 +13,7 @@
   padding-left: 16px;
   padding-right: 16px;
   margin-top: 2px;
+  /* font-family: 'Courier New', Courier, monospace; */
 }
 
 .button {
@@ -52,4 +53,32 @@
   border: 1px solid black;
   font-size: 20px;
   font-weight: bold;
-} */
+}
+
+.weekend {
+  background-color: grey;
+}
+
+.otherMonth {
+  color: rgb(61, 59, 59);
+}
+
+#calendarTable tbody tr td {
+  vertical-align: top;
+  margin: 0;
+  padding: 0;
+}
+
+#calendarTable tbody tr td div {
+  display: flex;
+  height: 100%;
+}
+
+.notThisMonth {
+  color: #969696 !important;
+}
+
+.isWeekend {
+  background-color: rgb(200, 200, 200);
+  color: blue;
+}
