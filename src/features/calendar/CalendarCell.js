@@ -2,9 +2,7 @@ import React from 'react';
 import './calendar.css';
 
 export default function CalendarCell(props) {
-  const { isThisMonth, isWeekend, number, reminderlist, date } = props;
-
-  console.log(reminderlist);
+  const { isThisMonth, isWeekend, number /*reminderlist, date*/ } = props;
 
   function generateReminders() {
     if (isThisMonth === 'notThisMonth') {

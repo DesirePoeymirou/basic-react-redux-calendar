@@ -19,9 +19,12 @@ export default function CalendarBody() {
     let nextMonthDays = [];
     let totalDays = [];
 
+    console.log('CALENDAR BODY');
+
     for (let i = 0; i < startOfMonth; i++) {
       prevMonthDays.push(
         <CalendarCell
+          key={`prev${i}`}
           number={''}
           isThisMonth={'notThisMonth'}
           isWeekend={i === 0 ? 'isWeekend' : ''}
@@ -37,6 +40,7 @@ export default function CalendarBody() {
 
       daysInMonth.push(
         <CalendarCell
+          key={`current${d}`}
           number={d}
           isThisMonth={'thisMonth'}
           isWeekend={
@@ -53,6 +57,7 @@ export default function CalendarBody() {
     for (let e = endOfMonth; e < 6; e++) {
       nextMonthDays.push(
         <CalendarCell
+          key={`next${e}`}
           number={''}
           isThisMonth={'notThisMonth'}
           isWeekend={e === 5 ? 'isWeekend' : ''}
