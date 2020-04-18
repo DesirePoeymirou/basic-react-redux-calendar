@@ -6,26 +6,26 @@ import moment from 'moment';
 import './calendar.css';
 
 export default function CalendarBody() {
-  const { currentMonth, currentYear, reminderlist } = useSelector(
-    (state) => state.calendar
-  );
+  const { currentMonth, currentYear } = useSelector((state) => state.calendar);
+  const { reminderList } = useSelector((state) => state.reminder);
   const startOfMonth = parseInt(moment().startOf('month').format('d'));
   const daysPerMonth = parseInt(moment().daysInMonth());
   const endOfMonth = parseInt(moment().endOf('month').format('d'));
-
   function generateTableRows(startOfMonth, daysPerMonth, endOfMonth) {
     let prevMonthDays = [];
     let daysInMonth = [];
     let nextMonthDays = [];
     let totalDays = [];
 
-    console.log('CALENDAR BODY');
-
-    for (let i = 0; i < startOfMonth; i++) {
+    for (let i = 0, j = startOfMonth; i < startOfMonth; i++, j--) {
+      const firstDayOfCurrentMonth = moment(
+        `01-${moment().month(currentMonth).format('M')}-${currentYear}`,
+        'DD-MM-YYYY'
+      );
       prevMonthDays.push(
         <CalendarCell
           key={`prev${i}`}
-          number={''}
+          number={firstDayOfCurrentMonth.subtract(j, 'days').format('D')}
           isThisMonth={'notThisMonth'}
           isWeekend={i === 0 ? 'isWeekend' : ''}
         />
@@ -35,9 +35,8 @@ export default function CalendarBody() {
     for (let d = 1; d <= daysPerMonth; d++) {
       let date = moment(
         `${currentYear}-${moment().month(currentMonth).format('M')}-${d}`,
-        'YYYY-MM-D'
+        'YYYY-MM-DD'
       );
-
       daysInMonth.push(
         <CalendarCell
           key={`current${d}`}
@@ -48,17 +47,18 @@ export default function CalendarBody() {
               ? 'isWeekend'
               : ''
           }
-          date={date}
-          reminderlist={reminderlist}
+          reminders={reminderList.filter((reminder) =>
+            moment(reminder[0].date).isSame(moment(date))
+          )}
         />
       );
     }
 
-    for (let e = endOfMonth; e < 6; e++) {
+    for (let e = endOfMonth, k = 1; e < 6; e++, k++) {
       nextMonthDays.push(
         <CalendarCell
           key={`next${e}`}
-          number={''}
+          number={`${k}`}
           isThisMonth={'notThisMonth'}
           isWeekend={e === 5 ? 'isWeekend' : ''}
         />

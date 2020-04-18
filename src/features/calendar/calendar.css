@@ -43,7 +43,7 @@
 }
 
 .header {
-  background-color: blue;
+  background-color: #005082;
   color: white;
   width: 150px;
 }
@@ -51,9 +51,12 @@
 .cell {
   width: 150px;
   height: 150px;
+  max-width: 150px;
+  max-height: 150px;
   border: 1px solid black;
   font-size: 20px;
   font-weight: bold;
+  overflow: hidden;
 }
 
 .weekend {
@@ -65,7 +68,6 @@
 }
 
 #calendarTable tbody tr td {
-  vertical-align: top;
   margin: 0;
   padding: 0;
 }
@@ -82,4 +84,15 @@
 .isWeekend {
   background-color: rgb(200, 200, 200);
   color: blue;
+}
+
+.number {
+  padding: 5px !important;
+  display: block !important;
+}
+
+.reminders {
+  flex-direction: column;
+  width: 100% !important;
+  max-height: 25px;
 }

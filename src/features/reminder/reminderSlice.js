@@ -7,7 +7,7 @@ export const reminderSlice = createSlice({
   },
   reducers: {
     addReminder: (state, action) => {
-      state.reminderlist = [...state.reminderlist, action.payload];
+      state.reminderList = [...state.reminderList, action.payload];
     },
   },
 });
