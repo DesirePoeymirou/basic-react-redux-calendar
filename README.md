@@ -6,12 +6,10 @@ To try it on your local machine clone this repository, open a command prompt on 
 
 TODOs:
 
-- Fix and complete Add reminder
-  - background color support
-  - modal popup
-- Add Month and Year cycling
+- Fix styling issues when cycling months and years
+  - Add month and year selectors
 - Add weather data
-- Fix days numbers
+  - See what's happening with the response (status=200 but data is not what expected)
 - Enhance styling
 
 Notes:
