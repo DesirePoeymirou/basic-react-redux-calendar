@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import '../calendar/calendar.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { addReminder } from './reminderSlice';
+import { addReminder, callWeatherAPI } from './reminderSlice';
 import moment from 'moment';
 import { CirclePicker } from 'react-color';
 import Modal from 'react-modal';
@@ -20,6 +20,8 @@ const customStyles = {
     left: '50%',
     right: 'auto',
     bottom: 'auto',
+    width: '400px',
+    height: '400px',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
   },
@@ -36,7 +38,7 @@ export default function ReminderModal() {
 
   const dispatch = useDispatch();
 
-  const handleClick = (e) => {
+  const saveReminder = (e) => {
     e.preventDefault();
 
     if (title === '' || moment(startDate).isBefore(moment().toISOString())) {
@@ -55,7 +57,9 @@ export default function ReminderModal() {
           },
         ])
       );
+      dispatch(callWeatherAPI({ city }));
       alert('Reminder added.');
+      closeModal();
     }
   };
 
@@ -124,7 +128,7 @@ export default function ReminderModal() {
           />
           <br />
         </form>
-        <button onClick={handleClick}>Save</button>
+        <button onClick={saveReminder}>Save</button>
         <button onClick={closeModal}>Close</button>
       </Modal>
     </div>
